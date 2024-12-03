@@ -1,0 +1,42 @@
+
+
+src/
+  ├── components/
+  │   └── PrivateRoute.js
+  ├── context/
+  │   └── AuthContext.js
+  ├── data/
+  │   └── users.js
+  ├── pages/
+  │   ├── Home/
+  │   │   ├── index.js
+  │   │   └── index.css
+  │   └── Login/
+  │       ├── index.js
+  │       └── index.css
+  │   └── Page1/
+  │       ├── index.js
+  │       └── index.css
+  │  		 └── ProductData/
+  │ 		      ├── index.js
+  │ 		      └── index.css
+  │  		 └── PortfolioData/
+  │ 		      ├── index.js
+  │ 		      └── index.css
+  │  		 └── NewData/
+  │ 		      ├── index.js
+  │ 		      └── index.css
+  │  		 └── HomeData/
+  │ 		      ├── index.js
+  │ 		      └── index.css
+  │  		 └── AboutData/
+  │ 		      ├── index.js
+  │ 		      └── index.css
+  │  		 └── LoginKey/
+  │ 		      ├── index.js
+  │ 		      └── index.css
+  │ 		      └── components
+  │ 		      	├── Data.js
+  │ 		      	└── Data.css
+
+  └── index.js
