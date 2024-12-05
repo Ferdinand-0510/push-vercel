@@ -9,6 +9,7 @@ import TitleImg from './components/TitleImg';
 import AboutMe from './components/AboutMe';
 import MarketEvent from './components/MarketEvent';
 import AnimateOnScroll from './components/AnimateOnScroll';
+import InputTitle from "./components/InputTitle";
 
 const App = () => {
     const [scrollPosition, setScrollPosition] = useState(0);
@@ -58,6 +59,10 @@ const App = () => {
                         <MarketEvent />
                     </div>
                 </AnimateOnScroll>
+                <div className="input-section">
+                                <h3>標題設定</h3>
+                 <InputTitle />
+                </div>
                 {/* <AnimateOnScroll>
                     <div>
                         <AboutMe />

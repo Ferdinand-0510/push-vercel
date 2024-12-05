@@ -21,7 +21,21 @@ nav ul {
     overflow-y: auto; /* 允許垂直滾動 */
     position: relative;
 }
+.input-section {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
 
+.input-section h3 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+}
 .content-section {
     transform: translateY(0); /* 或限制transformY的範圍 */
     will-change: transform; /* 提升性能 */
