@@ -51,7 +51,15 @@
     white-space: normal; /* 確保正常換行 */
     line-height: 1.2;
 }
-
+.TitleImg-smailtext{
+    color: black;
+    font-size: 20px; /* 可以根據需要調整字型大小 */
+    text-align: center;
+    font-weight: bold;  /* 設定粗體 */
+    margin: 5px 0;     /* 添加上下間距 */
+    white-space: normal; /* 確保正常換行 */
+    line-height: 1.2;
+}
 /* 平板電腦 */
 @media screen and (max-width: 1024px) {
     .image-container {

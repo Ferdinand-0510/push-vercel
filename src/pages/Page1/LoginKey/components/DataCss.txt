@@ -1,0 +1,175 @@
+.login-key-manager {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+.header h2 {
+    color: #1e2a47;
+    margin: 0;
+}
+
+.add-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-button:hover {
+    background-color: #45a049;
+}
+
+.data-grid {
+    display: grid;
+    gap: 15px;
+}
+
+.data-row {
+    background: #f8f9fa;
+    border-radius: 6px;
+    padding: 15px;
+    transition: transform 0.2s;
+}
+
+.data-row:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.data-content {
+    display: grid;
+    gap: 10px;
+}
+
+.data-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.label {
+    font-weight: bold;
+    color: #1e2a47;
+    min-width: 100px;
+}
+
+.edit-button,
+.save-button,
+.cancel-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-button {
+    background-color: #2196F3;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #1976D2;
+}
+.delete-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #f44336; /* Red color for delete */
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #d32f2f; /* Darker red for hover */
+}
+
+
+
+.save-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.save-button:hover {
+    background-color: #45a049;
+}
+
+.cancel-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.cancel-button:hover {
+    background-color: #d32f2f;
+}
+
+.edit-form,
+.add-form {
+    display: grid;
+    gap: 10px;
+    padding: 15px;
+    grid-template-columns: 15% 1fr; /* 設定兩列：一列自動大小，另一列占滿剩餘空間 */
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    align-items: center; /* 垂直置中 */
+}
+
+.edit-form input,
+.add-form input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: flex-end;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 16px;
+}
+
+.no-data {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 16px;
+    background: #f8f9fa;
+    border-radius: 6px;
+}

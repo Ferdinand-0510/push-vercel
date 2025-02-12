@@ -1,3 +1,4 @@
+//C:\類D槽\Python\StockWeb\webtest\src\context\AuthContext.js
 // 1. 導入必要的 React Hooks 和 axios
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
@@ -7,7 +8,7 @@ const AuthContext = createContext(null);
 
 // 3. 配置 axios 實例
 const api = axios.create({
-  baseURL: 'http://localhost:5000',  // 設置API基礎URL
+  baseURL: 'http://localhost:10000',  // 設置API基礎URL
   withCredentials: true,             // 允許跨域請求攜帶cookie
   headers: {
     'Content-Type': 'application/json'  // 設置請求頭

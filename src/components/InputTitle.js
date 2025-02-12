@@ -12,7 +12,7 @@ function InputTitle() {
     useEffect(() => {
         async function fetchTitle() {
             try {
-                const response = await axios.get('http://localhost:5000/api/get_title');
+                const response = await axios.get('http://192.168.49.119:10000/api/get_title');
                 setInputData(response.data.Title || ''); // 設定初始值
             } catch (error) {
                 setResponseMessage(error.response?.data?.error || '無法取得初始資料');
@@ -32,7 +32,7 @@ function InputTitle() {
         }
 
         try {
-            const response = await axios.post('http://localhost:5000/api/save_HomeData', {
+            const response = await axios.post('http://192.168.49.119:10000/api/save_HomeData', {
                 Title: inputData,
                 CustomerUuid: 'example-customer-uuid',
                 TitleImg: '',

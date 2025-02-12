@@ -1,0 +1,475 @@
+﻿/* 基本樣式（保留原樣） */
+html, body {
+    height: 100%; /* 確保頁面根元素有 100% 的高度 */
+    margin: 0; /* 移除預設邊距 */
+    background-color: #F8F8F8;
+}
+
+.box {
+    width: 100%;
+    height: 100%;
+    background-color: #F8F8F8;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0; /* 確保沒有額外的頁面邊距 */
+    padding-top: 50px; /* 留出空間讓內容不被固定的 .title1 遮擋 */
+}
+
+.title1 {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    background-color: white;
+    box-sizing: border-box;
+    /* 讓元素固定在畫面的上方 */
+    position: fixed;
+    top: 0; /* 距離頁面頂部 0 */
+    left: 0; /* 距離頁面左邊 0 */
+    right: 0; /* 距離頁面右邊 0 */
+    z-index: 1000; /* 確保它在其他元素之上 */
+}
+
+.logo {
+    flex: 2.5;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.space {
+    flex: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: max-height 0.3s ease; /* 手機版開關效果 */
+    flex-direction: column;
+}
+
+/* 中間選單 */
+.menu {
+    display: flex;
+    justify-content: flex-start;
+
+    align-items: center;
+    transition: max-height 0.3s ease; /* 手機版開關效果 */
+    flex-direction: column;
+    height: 100%;
+    background-color: #586D80;
+    /*background: #1e2a47;*/
+    margin: 10px; /* 菜单与页面边缘的间距 */
+    border-radius: 12px; /* 菜单边框圆弧效果 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5); /* 菜单阴影效果 */
+    box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.2), /* 内上方光线 */
+    inset 4px 4px 8px rgba(0, 0, 0, 0.2), /* 内下方阴影 */
+    0px 4px 6px rgba(88, 109, 128, 1); /* 外阴影，营造悬浮感 */
+    overflow: hidden; /* 防止内容溢出破坏圆角 */
+}
+
+    .menu > div {
+        padding: 5px 10px;
+        color: black;
+        cursor: pointer;
+    }
+
+
+.gotohome a {
+    color: black !important; /* 設置字體顏色為黑色 */
+    text-decoration: none !important; /* 移除底線 */
+}
+
+.member-login {
+    flex: 2.7;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    color: black !important;
+    text-decoration: none !important; /*不要底線*/
+}
+
+.gotohome {
+    flex: 2;
+    text-align: center;
+    text-decoration: none !important; /*不要底線*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    box-sizing: border-box; /* 確保內邊距不影響寬度 */
+    padding: 5px 10px; /* 增加一些內邊距 */
+    cursor: pointer; /* 增加指針效果 */
+    color:black !important;
+}
+
+.member-space {
+    flex: 3.5;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.separation {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    cursor: pointer;
+    max-width: 50px;
+}
+
+
+/* 主內容與側邊欄 */
+.body1 {
+    width: 87%;
+    background-color: #F8F8F8;
+    height: 94.5vh;
+    position: relative;
+    left: 5%;
+}
+
+.item1 {
+    width: 13%;
+    background-color: #F8F8F8;
+    height: 60vh;
+    position: fixed;
+    top: 50px; /* 距離頁面頂部 0 */
+    left: 0; /* 距離頁面左邊 0 */
+    right: 0; /* 距離頁面右邊 0 */
+    z-index: 1000; /* 確保它在其他元素之上 */
+
+}
+
+/* 漢堡選單樣式 */
+.hamburger {
+    display: none; /* 預設隱藏 */
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* 遮罩層 */
+.overlay {
+    position: fixed; /* 固定定位，覆蓋整個頁面 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色遮罩 */
+    display: none; /* 預設隱藏 */
+    z-index: 10; /* 保證遮罩層在所有內容之上 */
+}
+
+    /* 顯示遮罩層 */
+    .overlay.active {
+        display: block;
+    }
+
+
+/* 子選單基本樣式 */
+.has-submenu {
+    position: relative;
+    width: 100%;
+    color: white !important;
+}
+
+.submenu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+    background-color: #8592A2;
+}
+
+    .submenu.show {
+        max-height: 200px; /* 調整為適合的高度 */
+    }
+
+    .submenu > div {
+        width: 100%; /* 設置寬度為父容器的 100% */
+        padding: 10px 20px; /* 調整內邊距 */
+        cursor: pointer;
+        box-sizing: border-box; /* 確保內邊距不影響寬度 */
+        transition: background-color 0.2s ease;
+        position: relative;
+        display: flex; /* 啟用 Flexbox */
+        align-items: center; /* 垂直置中 */
+        justify-content: center; /* 水平置中 */
+        text-align: center; /* 確保文字居中 */
+    }
+
+        /* 滑鼠懸停效果 */
+        .submenu > div:hover {
+            background-color: #8E9AAB; /* 背景變灰色 */
+            left: 0; /* 保持對齊 */
+            right: 0; /* 保持對齊 */
+        }
+
+.menu > .nox1:hover, .nox3:hover, .nox5:hover {
+    /*background-color: #f0f0f0;*/ /* 背景變灰色 */
+    background-color: #8592A2;
+    transition: background-color 0.2s ease; /* 平滑過渡效果 */
+    width: 100%;
+    left: 0; /* 保持對齊 */
+    right: 0; /* 保持對齊 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+
+.menu > .nox1, .nox3, .nox5 {
+    font-size: 17px;
+    display: flex; /* 啟用 Flexbox */
+    align-items: center; /* 垂直置中 */
+    justify-content: center; /* 水平置中 */
+
+    width: 100%; /* 保持寬度為父容器的 100% */
+    height: 80px; /* 可根據需要設置高度 */
+    box-sizing: border-box; /* 確保內邊距不影響寬度 */
+    padding: 5px 10px; /* 增加一些內邊距 */
+    cursor: pointer; /* 增加指針效果 */
+    color: white !important;
+    text-decoration: none !important; /*不要底線*/
+}
+/* 箭頭樣式 */
+.has-submenu > div:first-child {
+    display: flex; /* 啟用 Flexbox */
+    align-items: center; /* 垂直置中 */
+    justify-content: center; /* 水平置中 */
+    width: 100%; /* 保持寬度為父容器的 100% */
+    height: 80px; /* 可根據需要設置高度 */
+    box-sizing: border-box; /* 確保內邊距不影響寬度 */
+    padding: 5px 10px; /* 增加一些內邊距 */
+    cursor: pointer; /* 增加指針效果 */
+}
+
+/* 如果需要針對特定區域的連結樣式 */
+.menu .submenu a {
+    font-size: 17px;
+    display: flex; /* 啟用 Flexbox */
+    align-items: center; /* 垂直置中 */
+    justify-content: center; /* 水平置中 */
+    width: 100%; /* 保持寬度為父容器的 100% */
+    height: 10%; /* 可根據需要設置高度 */
+    box-sizing: border-box; /* 確保內邊距不影響寬度 */
+    padding: 5px 10px; /* 增加一些內邊距 */
+    cursor: pointer; /* 增加指針效果 */
+    color: white !important;
+    text-decoration: none; /*不要底線*/
+}
+
+.menu .submenu a, .menu > div a {
+    color: white !important; /* 強制設為白色 */
+    text-decoration: none !important; /* 強制移除底線 */
+}
+
+    /*下拉式選單 css*/
+    .menu .submenu a:hover {
+        background-color: #8E9AAB; /* 懸停時背景色 */
+        color: #007BFF; /* 懸停時文字顏色 */
+    }
+
+
+
+/* RWD 媒體查詢 */
+@media screen and (max-width: 768px) {
+    /* 漢堡選單按鈕顯示 */
+    .hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+    }
+
+
+
+    .menu > .nox1, .nox3, .nox5 {
+        font-size: 17px;
+        display: flex; /* 啟用 Flexbox */
+        align-items: center; /* 垂直置中 */
+        justify-content: center; /* 水平置中 */
+        width: 100%; /* 保持寬度為父容器的 100% */
+        height: 100px; /* 可根據需要設置高度 */
+        box-sizing: border-box; /* 確保內邊距不影響寬度 */
+        padding: 5px 10px; /* 增加一些內邊距 */
+        cursor: pointer; /* 增加指針效果 */
+    }
+
+    .has-submenu > div:first-child {
+        display: flex; /* 啟用 Flexbox */
+        align-items: center; /* 垂直置中 */
+        justify-content: center; /* 水平置中 */
+        width: 100%; /* 保持寬度為父容器的 100% */
+        height: 100px; /* 可根據需要設置高度 */
+        box-sizing: border-box; /* 確保內邊距不影響寬度 */
+        padding: 5px 10px; /* 增加一些內邊距 */
+        cursor: pointer; /* 增加指針效果 */
+    }
+
+    /* 隱藏原本的選單 */
+    .menu {
+        display: none; /* 預設隱藏 */
+        flex-direction: column;
+        background-color: white;
+        position: absolute;
+        top: 0px; /* 顯示在標題下方 */
+        left: 0;
+        width: 100%;
+        max-height: 0; /* 預設高度為 0 */
+        overflow: hidden; /* 隱藏超出的部分 */
+        z-index: 20; /* 確保選單在遮罩層之上 */
+    }
+
+        /* 當選單展開時 */
+        .menu.open {
+            width: 50%;
+            display: flex;
+            height: 100%;
+            max-height: 100vh; /* 展開後的高度（依內容調整） */
+            border-top: 1px solid #ccc;
+        }
+
+        .menu > div {
+            text-align: center; /* 手機版選單文字置中 */
+            padding: 15px 0; /* 增加點擊範圍 */
+            border-bottom: 1px solid #eee;
+        }
+
+    .body1, .item1 {
+        width: 100%; /* 手機版佔滿寬度 */
+        height: auto; /* 高度根據內容調整 */
+    }
+
+    .submenu {
+        background-color: #f8f8f8;
+        width: 100%;
+    }
+
+        .submenu > div {
+            padding: 15px 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+    .menu.open .submenu.show {
+        max-height: 300px; /* 手機版可能需要更大的高度 */
+    }
+}
+
+
+
+
+/* 動畫效果 */
+.has-submenu > div:first-child {
+    transition: background-color 0.2s ease;
+}
+
+    .has-submenu > div:first-child:hover {
+        background-color: #8592A2;
+    }
+
+.submenu > div {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.submenu.show > div {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 為每個子選單項添加延遲動畫 */
+.submenu > div:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.submenu > div:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.submenu > div:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+/* 更新月亮動畫的 CSS */
+.moon {
+    display: inline-flex;
+    margin-right: 8px;
+    position: relative;
+    width: 1.2em; /* 使用 em 單位使其與文字大小相對應 */
+    height: 1.2em;
+    align-items: center;
+    justify-content: center;
+}
+
+.moon-icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* 預設透明 */
+    pointer-events: none; /* 避免干擾點擊事件 */
+    will-change: transform, opacity; /* 優化動畫性能 */
+}
+
+    .moon-icon.visible {
+        opacity: 1;
+    }
+
+@keyframes moonRotateOut {
+    0% {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes moonRotateIn {
+    0% {
+        transform: rotate(0deg);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        opacity: 1;
+    }
+}
+
+.moon-icon.rotate-out {
+    animation: moonRotateOut 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.moon-icon.rotate-in {
+    animation: moonRotateIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* 確保動畫期間不會影響佈局 */
+.nox5 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    user-select: none; /* 防止文字被選中 */
+}

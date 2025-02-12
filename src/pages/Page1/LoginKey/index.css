@@ -1,0 +1,10 @@
+/* styles.css 或 HomeData.css */
+.LoginKey-container {
+    display: flex;
+    flex-direction: column; /* 改為縱向排列 */
+    gap: 20px; /* 設置項目間距 */
+    padding: 40px;
+
+
+
+}

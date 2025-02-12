@@ -1,33 +1,36 @@
-
+import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './index.css';
-import { BrowserRouter as Router, Routes, Route, Link, useLocation,Navigate  } from 'react-router-dom';
-
-import React, { useEffect, useState } from 'react';
-import './index.css';
+import { AuthProvider } from './context/AuthContext';
 import TitleImg from './components/TitleImg';
-import AboutMe from './components/AboutMe';
 import MarketEvent from './components/MarketEvent';
 import AnimateOnScroll from './components/AnimateOnScroll';
-import InputTitle from "./components/InputTitle";
+import Page1 from './pages/Page1';
+import HotProductCarousel from './components/HotProductCarousel';
+import TitlebuttonJs from './components/TitlebuttonJs';
+import ProductData from './pages/Page1/ProductData';
+import PortfolioData from './pages/Page1/PortfolioData';
+import HomeData from './pages/Page1/HomeData';
+import LoginPage from './pages/Login'; // 確保有一個登入頁面組件
+import LoginKey from './pages/Page1/LoginKey';
+import { PrivateRoute } from './components/PrivateRoute';
 
-const App = () => {
-    const [scrollPosition, setScrollPosition] = useState(0);
-    const [isMobile, setIsMobile] = useState(false);
+// 主頁面組件
+const Home = () => {
+    const [scrollPosition, setScrollPosition] = React.useState(0);
+    const [isMobile, setIsMobile] = React.useState(false);
 
-    useEffect(() => {
-        // 檢查是否為移動設備
+    React.useEffect(() => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth <= 768);
         };
 
-        // 初始檢查
+        
         checkMobile();
 
-        // 監聽視窗大小變化
         window.addEventListener('resize', checkMobile);
 
-        // 滾動處理
         const handleScroll = () => {
             if (!isMobile) {
                 setScrollPosition(window.pageYOffset);
@@ -47,7 +50,7 @@ const App = () => {
             <div className="title-section">
                 <TitleImg />
             </div>
-
+            
             <div 
                 className="content-section"
                 style={{ 
@@ -56,23 +59,38 @@ const App = () => {
             >
                 <AnimateOnScroll>
                     <div>
+                        <HotProductCarousel/>
+                        <TitlebuttonJs/>
                         <MarketEvent />
                     </div>
                 </AnimateOnScroll>
-                <div className="input-section">
-                                <h3>標題設定</h3>
-                 <InputTitle />
-                </div>
-                {/* <AnimateOnScroll>
-                    <div>
-                        <AboutMe />
-                    </div>
-                </AnimateOnScroll> */}
             </div>
         </div>
     );
 };
-
+// App 組件
+const App = () => {
+    return (
+        <AuthProvider>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<LoginPage />} /> {/* 新增登入頁面 */}
+                    <Route path="/page1/*" element={
+                        <PrivateRoute>
+                            <Page1 />
+                        </PrivateRoute>}>
+                        <Route path="product-data" element={<ProductData />} />
+                        <Route path="portfolio-data" element={<PortfolioData />} />
+                        <Route path="home-data" element={<HomeData />} />
+                        <Route path="login-key" element={<LoginKey />} />
+                    </Route>
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
+            </Router>
+        </AuthProvider>
+    );
+};
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>

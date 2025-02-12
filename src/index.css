@@ -17,7 +17,7 @@ nav ul {
     max-width: 100%;
 }
 .parallax-container {
-    height: 100%; /* 或 auto */
+    height: auto; /* 或 auto */
     overflow-y: auto; /* 允許垂直滾動 */
     position: relative;
 }
@@ -299,6 +299,7 @@ nav ul {
                 position: relative;
                 width: 100%;
                 min-height: 100vh;
+                max-height: 2000px;
                 overflow: visible;
                 box-sizing: border-box;
             }

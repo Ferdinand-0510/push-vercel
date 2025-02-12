@@ -1,0 +1,203 @@
+.admin-dashboard {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.dashboard-title {
+    color: #2c3e50;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #3498db;
+}
+
+.module-section {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.module-section:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.module-header {
+    background: #1e2a47;
+    padding: 1.5rem 2rem;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.module-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.module-description {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.module-content {
+    padding: 2rem;
+}
+
+.title-image-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.input-section {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+
+    /* 使用 Flexbox 將內容水平垂直置中 */
+
+    justify-content: center; /* 水平置中 */
+    align-items: center;    /* 垂直置中 */
+
+}
+
+
+.input-section h3 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+/* 響應式設計 */
+@media (max-width: 768px) {
+    .admin-dashboard {
+        padding: 1rem;
+    }
+
+    .module-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .title-image-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 動畫效果 */
+.module-section {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 美化滾動條 */
+.module-content {
+    scrollbar-width: thin;
+    scrollbar-color: #1e2a47 #f8f9fa;
+}
+
+.module-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.module-content::-webkit-scrollbar-track {
+    background: #f8f9fa;
+}
+
+.module-content::-webkit-scrollbar-thumb {
+    background-color: #1e2a47;
+    border-radius: 4px;
+}
+
+/* 添加到現有的 CSS 中 */
+.module-header.clickable {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.3s ease;
+}
+
+.module-header.clickable:hover {
+    background-color: #2a3c5d;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.expand-icon {
+    transition: transform 0.3s ease;
+    display: inline-block;
+    font-size: 0.8rem;
+}
+
+.expand-icon.expanded {
+    transform: rotate(180deg);
+}
+
+.module-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+    padding: 0;
+}
+
+.module-content.expanded {
+    max-height: 2000px; /* 根據內容調整此值 */
+    padding: 2rem;
+}
+
+.content-wrapper {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.3s ease;
+}
+
+.content-wrapper.visible,
+.module-content.expanded .content-wrapper {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 為預設展開的模組添加特殊樣式 */
+.module-section:first-of-type .module-header {
+    background: #4a5d6f; /* 稍微不同的背景色以區分 */
+}
+
+.module-section:first-of-type .expand-icon {
+    opacity: 0.5; /* 讓箭頭看起來比較不明顯 */
+}
+
+/* 確保動畫平滑 */
+.module-section {
+    transition: all 0.3s ease;
+}
+
+/* 當展開時的陰影效果 */
+.module-section:has(.module-content.expanded) {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}

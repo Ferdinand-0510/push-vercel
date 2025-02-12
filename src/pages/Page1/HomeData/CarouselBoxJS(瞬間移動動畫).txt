@@ -1,0 +1,183 @@
+import React, { useState, useEffect, useRef } from 'react';
+import './CarouselBox.css';
+
+function CarouselBox() {
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [selectedProduct, setSelectedProduct] = useState(null);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [modalPosition, setModalPosition] = useState(null);
+    const modalRef = useRef(null);
+    const triggerRef = useRef(null);
+    // 商品資料 - 8張圖片，這裡我增加了詳細描述
+    const items = [
+        {
+            id: 1,
+            title: "商品1",
+            price: "$299",
+            image: "/images/A.jpg",
+            description: "這是商品1的詳細介紹。商品包含高品質材料，設計精緻，適合各種場合使用。"
+        },
+        {
+            id: 2,
+            title: "商品2",
+            price: "$399",
+            image: "/images/B.jpg",
+            description: "商品2擁有獨特的設計和優秀的功能性。精心製作，提供最佳的使用體驗。"
+        },
+        {
+            id: 3,
+            title: "商品3",
+            price: "$499",
+            image: "/images/C.jpg",
+            description: "商品3是當前市場上最先進的選擇。其創新設計和卓越性能將令您驚嘆。"
+        },
+        {
+            id: 4,
+            title: "商品4",
+            price: "$599",
+            image: "/images/D.jpg",
+            description: "商品4融合了美學和實用性。無論是日常使用還是特殊場合，都是絕佳選擇。"
+        },
+        {
+            id: 5,
+            title: "商品5",
+            price: "$699",
+            image: "/images/E.jpg",
+            description: "商品5代表了最高品質的標準。精細的工藝和優質材料確保了卓越的性能。"
+        },
+        {
+            id: 6,
+            title: "商品6",
+            price: "$799",
+            image: "/images/F.jpg",
+            description: "商品6是專業人士的首選。其高端配置和精密設計將滿足最挑剔的用戶。"
+        },
+        {
+            id: 7,
+            title: "商品7",
+            price: "$899",
+            image: "/images/G.jpg",
+            description: "商品7以其獨特的風格和功能脫穎而出。是追求與眾不同的您的理想選擇。"
+        },
+        {
+            id: 8,
+            title: "商品8",
+            price: "$999",
+            image: "/images/H.jpg",
+            description: "商品8是科技與設計的完美結合。每一個細節都經過精心雕琢，只為帶來最佳體驗。"
+        }
+    ];
+
+
+    // 下一組
+    const nextSlide = () => {
+        setActiveIndex((current) =>
+            current === items.length - 5 ? 0 : current + 1
+        );
+    };
+
+    // 上一組
+    const prevSlide = () => {
+        setActiveIndex((current) =>
+            current === 0 ? items.length - 5 : current - 1
+        );
+    };
+
+    const openProductModal = (product, event) => {
+        const triggerElement = event.currentTarget;
+        triggerRef.current = triggerElement;
+
+        // 計算觸發元素的位置和尺寸
+        const rect = triggerElement.getBoundingClientRect();
+        setModalPosition({
+            top: `${rect.top}px`,
+            left: `${rect.left}px`,
+            width: `${rect.width}px`,
+            height: `${rect.height}px`
+        });
+
+        setSelectedProduct(product);
+
+        // 使用下一個事件循環確保動畫生效
+        setTimeout(() => {
+            setIsModalVisible(true);
+        }, 10);
+    };
+
+    const closeProductModal = () => {
+        setIsModalVisible(false);
+        setTimeout(() => {
+            setSelectedProduct(null);
+            setModalPosition(null);
+        }, 300);  // 與動畫時間一致
+    };
+
+    return (
+        <div className="multi-carousel">
+            {/* 導航按鈕等保持不變 */}
+            <div className="multi-carousel__container">
+                <div className="multi-carousel__track" style={{ transform: `translateX(-${activeIndex * 20}%)` }}>
+                    {items.map((item) => (
+                        <div
+                            key={item.id}
+                            className="multi-carousel__item"
+                            onClick={(event) => openProductModal(item, event)}
+                        >
+                            <div className="multi-carousel__card">
+                                <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    className="multi-carousel__image"
+                                />
+                                <div className="multi-carousel__content">
+                                    <h3>{item.title}</h3>
+                                    <p>{item.price}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {selectedProduct && (
+                <div
+                    className={`product-modal-overlay ${isModalVisible ? 'show' : ''}`}
+                    onClick={closeProductModal}
+                >
+                    <div
+                        ref={modalRef}
+                        className="product-modal"
+                        style={{
+                            '--start-top': modalPosition.top,
+                            '--start-left': modalPosition.left,
+                            '--start-width': modalPosition.width,
+                            '--start-height': modalPosition.height
+                        }}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <button className="product-modal__close" onClick={closeProductModal}>×</button>
+                        <div className="product-modal__content">
+                            <div className="product-modal__image-container">
+                                <img
+                                    src={selectedProduct.image}
+                                    alt={selectedProduct.title}
+                                    className="product-modal__image"
+                                />
+                            </div>
+                            <div className="product-modal__details">
+                                <h2>{selectedProduct.title}</h2>
+                                <p className="product-modal__price">{selectedProduct.price}</p>
+                                <p className="product-modal__description">
+                                    {selectedProduct.description}
+                                </p>
+                                <button className="product-modal__buy-btn">立即購買</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
+
+export default CarouselBox;

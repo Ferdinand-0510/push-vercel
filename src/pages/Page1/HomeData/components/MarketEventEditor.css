@@ -1,0 +1,239 @@
+/* MarketEventEditor CSS */
+.container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.input {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.MEbutton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 20%;
+
+}
+/* 通用按鈕 hover 樣式 */
+.MEbutton:hover {
+    background-color: #0056b3; /* 深藍色 */
+}
+.button-group {
+    display: flex;
+    gap: 10px; /* 按鈕之間的間距 */
+    justify-content: flex-start; /* 或改為 center, space-between, 等 */
+    align-items: center; /* 垂直對齊 */
+}
+
+.ShowItembutton {
+    background-size: 200%; /* 放大圖片，僅顯示中間部分 */
+    background-position: center; /* 顯示圖片的中心區域 */
+    background-repeat: no-repeat; /* 防止圖片重複 */
+    background-color: #eb981c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 20%; /* 按鈕寬度 */
+    height: auto; /* 自動調整高度 */
+    left: 20%;
+    position: relative;
+    transition: background-size 0.5s ease, left 0.5s ease; /* 添加平滑過渡效果 */
+}
+
+/* 通用按鈕 hover 樣式 */
+.ShowItembutton:hover {
+    background-color: #ac5611; 
+}
+
+
+.ShowItembutton.move-left {
+    left: 0%; /* 向左移動 */
+    background-size: cover; /* 還原顯示整張圖片 */
+    transform: scale(2); /* 按鈕放大 5 倍 */
+    transform-origin: top left; /* 放大的方向為右下角 */
+    transition: left 0.5s ease, transform 0.5s ease; /* 平滑過渡效果 */
+}
+
+.ShowItembutton.move-back {
+    left: 15%;
+    transition: left 0.5s ease; /* 添加平滑動畫效果 */
+}
+
+/* 當按鈕是紅色時的 hover 樣式 */
+.close-button-active:hover {
+    background-color: #a71d2a; /* 深紅色 */
+}
+
+.add-event-button {
+    width: 20%;
+    margin-bottom: 20px;
+}
+
+.deleteButton {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 35%;
+    
+}
+
+.deleteButton:hover {
+    background-color: #a71d2a;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.eventCard {
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: #f8f9fa;
+}
+
+.eventHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.eventbox-item{
+    max-width: 500px;
+    flex-grow: 2;
+}
+.eventbox-button{
+    flex-grow: 1;
+}
+.update-del-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 20%;
+}
+
+/* Animation for add form */
+.add-form-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+    padding: 0;
+
+}
+
+.add-form-wrapper.visible {
+    max-height: 800px; /* Large enough to accommodate form */
+    padding: 20px 0;
+}
+.close-button-active {
+    background-color: #dc3545; /* 紅色 */
+    color: white;
+    
+}
+
+.editButton {
+    background-color: #28a745;  /* 綠色 */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 35%;
+    margin-right: 10px;
+}
+
+.editButton:hover {
+    background-color: #218838;  /* 深綠色 */
+}
+
+
+/*------下拉式選單------*/
+/* 整體容器樣式 */
+.dropdown-container {
+    max-width: 400px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+
+}
+
+/* 下拉選單行樣式 */
+.dropdown-row {
+    display: flex;
+    align-items: center; /* 讓文字與下拉選單垂直居中 */
+    justify-content: flex-start; /* 文字與下拉選單靠左對齊 */
+    gap: 10px; /* 控制文字與下拉選單的間距 */
+    min-width: 500px;
+}
+
+/* 標籤樣式 */
+.dropdown-label {
+    font-size: 1rem;
+    color: #333;
+    white-space: nowrap; /* 防止文字換行 */
+}
+
+/* 下拉選單樣式 */
+.custom-dropdown {
+    padding: 10px;
+    font-size: 1rem;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    outline: none;
+    transition: border-color 0.3s ease;
+    flex: 1; /* 讓下拉選單自動填滿剩餘空間 */
+}
+
+.custom-dropdown:focus {
+    border-color: #007bff;
+}
+
+/* 選中的值樣式 */
+.selected-value {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* 錯誤訊息樣式 */
+.error-message {
+    margin-top: 10px;
+    color: red;
+    font-size: 0.9rem;
+}
+

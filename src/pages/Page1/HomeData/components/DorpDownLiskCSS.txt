@@ -1,0 +1,89 @@
+/* DorpDownLisk.css */
+
+/* 全局樣式 */
+.body-container {
+    font-family: Arial, sans-serif;
+    background-color: #F8F8F8;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* 父容器 */
+.dropdown-container {
+    display: inline-block;
+    margin: 10px 0;
+}
+
+/* 下拉式選單 */
+.dropdown-select {
+    width: 250px;
+    padding: 10px;
+    border: 2px solid #586D80;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    color: #333;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+    cursor: pointer;
+    margin: 20px;
+}
+
+    /* Hover 效果 */
+    .dropdown-select:hover {
+        border-color: #455A64;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Focus 效果 */
+    .dropdown-select:focus {
+        border-color: #1E88E5;
+        box-shadow: 0 4px 10px rgba(30, 136, 229, 0.4);
+        background: #f0f8ff;
+    }
+
+    /* 禁用狀態 */
+    .dropdown-select:disabled {
+        background: #ddd;
+        color: #999;
+        border-color: #ccc;
+        box-shadow: none;
+        cursor: not-allowed;
+    }
+
+    /* 錯誤狀態 */
+    .dropdown-select:focus:invalid {
+        border-color: #e57373; /* 無效狀態 */
+        animation: shake 0.2s ease-in-out;
+    }
+
+/* Shake 動畫 */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25%, 75% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+/* 標籤文字 */
+.dropdown-label {
+    font-size: 18px;
+    color: #586D80;
+    margin: 10px 0;
+}
+
+/* 顯示選擇結果的文字樣式 */
+.dropdown-result {
+    font-weight: bold;
+    color: #37474F;
+    margin-top: 15px;
+}

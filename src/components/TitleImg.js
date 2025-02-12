@@ -10,6 +10,8 @@ function TitleImg() {
             <div className="homeoverlay">
                 <p className="TitleImg-text">歡迎瀏覽</p>
                 <p className="TitleImg-text">這裡是活動大詮</p>
+                <p className="TitleImg-smailtext">一個喜歡去市集、活動、展覽的人 無聊整理的，如果覺得不錯</p>
+                <p className="TitleImg-smailtext">可以追蹤及按讚以表支持</p>
             </div>
         </div>
     );

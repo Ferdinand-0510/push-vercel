@@ -1,0 +1,71 @@
+#--------------------------------------------------------取得LoginKey資料--------------------------------------------------------
+@app.route('/api/get_loginkey', methods=['GET'])
+def get_loginkey():
+    try:
+        with create_connection() as conn_sql_server:
+            with conn_sql_server.cursor() as cursor:
+                cursor.execute("SELECT * FROM WebLoginKey")
+                columns = [column[0] for column in cursor.description]
+                rows = cursor.fetchall()
+                
+                # 將查詢結果轉換為字典列表
+                result = []
+                for row in rows:
+                    result.append(dict(zip(columns, row)))
+                #print("result:",result)
+                return jsonify(result), 200
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+    
+@app.route('/api/update_loginkey/<int:id>', methods=['PUT'])
+def update_loginkey(id):
+    try:
+        data = request.json
+        with create_connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute("""
+                    UPDATE WebLoginKey 
+                    SET Name = ?, Description = ?
+                    WHERE Id = ?
+                """, (data['Name'], data['Description'], id))
+                conn.commit()
+        return jsonify({"message": "更新成功"}), 200
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+    
+@app.route('/api/delete_loginkey/<int:id>', methods=['DELETE'])
+def delete_loginkey(id):
+    try:
+        with create_connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute("""
+                    DELETE FROM WebLoginKey
+                    WHERE Id = ?
+                """, (id,))
+                conn.commit()
+        return jsonify({"message": "刪除成功"}), 200
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+
+
+@app.route('/api/add_loginkey', methods=['POST'])
+def add_loginkey():
+    try:
+        data = request.json
+        #print("data:",data , ",key:" , data['LoginKey'])
+        uuid1 = uuid.uuid4()
+        #print("uuid:",uuid1 , ",key:" , data['LoginKey'])
+        with create_connection() as conn:
+            with conn.cursor() as cursor:
+                cursor.execute("""
+                    INSERT INTO WebLoginKey (Uuid, Name, LoginKey, Description)
+                    VALUES (?, ?, ?, ?)
+                """, (uuid1, data['Name'], data['LoginKey'], data['Description']))
+                conn.commit()
+        return jsonify({"message": "新增成功"}), 201
+    except Exception as e:
+        return jsonify(error=str(e)), 500
+
+    
+
+#--------------------------------------------------------取得LoginKey資料--------------------------------------------------------
