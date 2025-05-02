@@ -1,4 +1,0 @@
-<script type="text/javascript">
-    const redirectTo = window.location.pathname.replace('/ferdinand-0510.github.io', '');
-    window.location.href = `${window.location.origin}/ferdinand-0510.github.io/#${redirectTo}`;
-</script>
